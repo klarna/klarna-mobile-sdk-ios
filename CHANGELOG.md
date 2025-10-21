@@ -5,7 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.9.0] - 2025-10-20
+
+- Separated payments integrations `KlarnaPaymentView` and `KlarnaExpressCheckoutButton` to a new `KlarnaPayments` library module.
+- Improved error handling and reporting for Sign in with Klarna flows.
+- Migrated to new Github repository to fix long fetching times using Swift Package Manager with large git history.
+- Fix internal handling of nullable booleans in payments integration.
+
 ## [2.8.1] - 2025-09-25
+
 - Renamed `KlarnaPayment` module to `KlarnaNetworkPayment` to address naming conflict errors.
 - Internal optimizations and improvements.
 
