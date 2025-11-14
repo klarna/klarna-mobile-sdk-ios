@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.10.0] - 2025-11-13
+
+- Added Klarna Messaging integration as part of Klarna Network with new `KlarnaNetworkMessaging` module.
+- Added Klarna Payment Presentation content fetching to KlarnaPayment integration.
+- Added improved support for links inside KlarnaOSMView with System WebViews.
+- Fixed an issue where snapshot view for WebView transition was not removed after.
+
 ## [2.9.0] - 2025-10-20
 
 - Separated payments integrations `KlarnaPaymentView` and `KlarnaExpressCheckoutButton` to a new `KlarnaPayments` library module.
