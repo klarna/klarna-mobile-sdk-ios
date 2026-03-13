@@ -5,7 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.11.1] - 2026-03-13
+
+- Fixed an issue in KlarnaOSMView when embedded in React Native apps.
+- Improved internal logic for Sign in flows using ASWebAuthenticationSession.
+
 ## [2.11.0] - 2026-02-12
+
 - Added Klarna Identity integration as part of Klarna Network with new `KlarnaNetworkIdentity` module.
 - Added ondemand services and subscription options to `KlarnaPaymentRequestData`.
 - Added `klarnaNetworkSessionToken` property to `KlarnaConfiguration` when initializing `Klarna`.
@@ -20,9 +26,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed an issue in Klarna Payments integration when an internal component failed to load on a clean install of the integrating app.
 
 ## [2.10.2] - 2025-12-04
+
 - Optimized message queues for receivers in WebViews.
 
 ## [2.10.1] - 2025-11-18
+
 - Fixed a module compilation error in `KlarnaCore`.
 
 ## [2.10.0] - 2025-11-13
