@@ -1,0 +1,33 @@
+name: Publish to CocoaPods
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  publish:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.release.tag_name }}
+
+      - name: Validate podspec version matches release
+        run: |
+          podspec_version=$(grep -m1 "s.version" KlarnaMobileSDK.podspec | grep -oE '[0-9]+\.[0-9]+\.[0-9]+')
+          release_version="${{ github.event.release.tag_name }}"
+          if [ "$podspec_version" != "$release_version" ]; then
+            echo "ERROR: Podspec version ($podspec_version) does not match release version ($release_version)"
+            exit 1
+          fi
+          echo "Version match confirmed: $podspec_version"
+
+      - name: Lint podspec
+        run: pod spec lint KlarnaMobileSDK.podspec --allow-warnings
+
+      - name: Push to CocoaPods trunk
+        run: pod trunk push KlarnaMobileSDK.podspec --allow-warnings
+        env:
+          COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}

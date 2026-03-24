@@ -1,0 +1,57 @@
+name: Create Release
+
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Read latest version from CHANGELOG.md
+        id: changelog
+        run: |
+          version=$(grep -m 1 -oP '^## \[\K[0-9]+\.[0-9]+\.[0-9]+' CHANGELOG.md)
+          if [ -z "$version" ]; then
+            echo "No version found in CHANGELOG.md"
+            exit 1
+          fi
+          echo "Latest version: $version"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      - name: Check if tag already exists
+        id: check_tag
+        run: |
+          if git rev-parse "refs/tags/${{ steps.changelog.outputs.version }}" >/dev/null 2>&1; then
+            echo "Tag ${{ steps.changelog.outputs.version }} already exists, skipping release."
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Tag ${{ steps.changelog.outputs.version }} does not exist, proceeding with release."
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Extract release notes from CHANGELOG.md
+        if: steps.check_tag.outputs.exists == 'false'
+        id: release_notes
+        run: |
+          version="${{ steps.changelog.outputs.version }}"
+          awk "/^## \[${version}\]/{found=1; next} /^## \[/{if(found) exit} found{print}" CHANGELOG.md > /tmp/release_notes.txt
+
+      - name: Create GitHub Release
+        if: steps.check_tag.outputs.exists == 'false'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.changelog.outputs.version }}
+          name: ${{ steps.changelog.outputs.version }}
+          body_path: /tmp/release_notes.txt
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
