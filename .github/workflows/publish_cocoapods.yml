@@ -14,6 +14,9 @@ jobs:
         with:
           ref: ${{ github.event.release.tag_name }}
 
+      - name: Install CocoaPods
+        run: gem install cocoapods -v 1.16.2
+
       - name: Validate podspec version matches release
         run: |
           podspec_version=$(grep -m1 "s.version" KlarnaMobileSDK.podspec | grep -oE '[0-9]+\.[0-9]+\.[0-9]+')
@@ -24,10 +27,12 @@ jobs:
           fi
           echo "Version match confirmed: $podspec_version"
 
-      - name: Lint podspec
-        run: pod spec lint KlarnaMobileSDK.podspec --allow-warnings
+      - name: Verify pod trunk authentication
+        run: pod trunk me
+        env:
+          COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
 
       - name: Push to CocoaPods trunk
-        run: pod trunk push KlarnaMobileSDK.podspec --allow-warnings
+        run: pod trunk push KlarnaMobileSDK.podspec
         env:
           COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
