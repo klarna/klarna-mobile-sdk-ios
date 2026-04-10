@@ -7,7 +7,7 @@ let package = Package(
     products: [
         .library(
             name: "KlarnaMobileSDK",
-            targets: ["KlarnaCore", "KlarnaMobileSDK", "KlarnaPayments"]
+            targets: ["KlarnaCore", "KlarnaCoreWebView", "KlarnaMobileSDK", "KlarnaPayments"]
         ),
         .library(
             name: "KlarnaNetworkPayment",
@@ -23,45 +23,50 @@ let package = Package(
         ),
         .library(
             name: "KlarnaPayments",
-            targets: ["KlarnaCore", "KlarnaPayments"]
+            targets: ["KlarnaCore", "KlarnaCoreWebView", "KlarnaPayments"]
         )
     ],
     dependencies: [],
     targets: [
         .binaryTarget(
             name: "KlarnaCore",
-            url: "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaCore/2.11.2/KlarnaCore.xcframework.zip",
-            checksum: "207ecafd118842fc21d1e914ee522965d83ab4416f96c4412b3985bf846c39a2"
+            url: "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaCore/2.11.3/KlarnaCore.xcframework.zip",
+            checksum: "6d324d1025d3616350f9730d937278efd7ba733dd28706db17936354bde11f66"
+        ),
+        .binaryTarget(
+            name: "KlarnaCoreWebView",
+            url: "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaCoreWebView/2.11.3/KlarnaCoreWebView.xcframework.zip",
+            checksum: "f5e1969bcca71b13c77778560b46b2462a3b0a5d67241ed3ea4592d2be6ff226"
         ),
         .binaryTarget(
             name: "KlarnaMobileSDK",
-            url: "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaMobileSDK/2.11.2/KlarnaMobileSDK.xcframework.zip",
-            checksum: "4cd5f93cfd010f2c125ceff204830c6048f24037d0ac80629b4e8266d65e6992"
+            url: "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaMobileSDK/2.11.3/KlarnaMobileSDK.xcframework.zip",
+            checksum: "470cc9b4c1f21a13758e5ee6815c34a6675319b976743602eaf1f013ba0bc140"
         ),
         .binaryTarget(
             name: "KlarnaNetworkCore",
-            url: "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaNetworkCore/2.11.2/KlarnaNetworkCore.xcframework.zip",
-            checksum: "4270fbd6e9455e84db29a80690b8b75572b26d7eda9a4f29c2b9de9490b00dd0"
+            url: "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaNetworkCore/2.11.3/KlarnaNetworkCore.xcframework.zip",
+            checksum: "736dfea92c52a27ed97f7959e7dea22248bcaa6f618b4a6072b8de47aeca40d3"
         ),
         .binaryTarget(
             name: "KlarnaNetworkPayment",
-            url: "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaNetworkPayment/2.11.2/KlarnaNetworkPayment.xcframework.zip",
-            checksum: "dfe44c4f8c8f9082a7320714e7598cb9d0344987bc6befeaafdcf3ce118dc1ad"
+            url: "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaNetworkPayment/2.11.3/KlarnaNetworkPayment.xcframework.zip",
+            checksum: "0c26c151d168539bf34dba38847956468ecf661a78a45eff5a5c0b87e7c91ecd"
         ),
         .binaryTarget(
             name: "KlarnaNetworkIdentity",
-            url: "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaNetworkIdentity/2.11.2/KlarnaNetworkIdentity.xcframework.zip",
-            checksum: "ca9b01fd7e2e377886a7f520cb79dc58329c6c60354e18f6d314ac7838b5368d"
+            url: "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaNetworkIdentity/2.11.3/KlarnaNetworkIdentity.xcframework.zip",
+            checksum: "5b6b7ffd7644a83348a25239f92efca8c79f08281a52e91d39d3ba9d933a2008"
         ),
         .binaryTarget(
             name: "KlarnaNetworkMessaging",
-            url: "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaNetworkMessaging/2.11.2/KlarnaNetworkMessaging.xcframework.zip",
-            checksum: "4d535703fe8c5b75e37465694454f2957588bcc8b4d54cd9ce4fc4d9cb6886da"
+            url: "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaNetworkMessaging/2.11.3/KlarnaNetworkMessaging.xcframework.zip",
+            checksum: "08badbf3c685c278a9d6fa109537492d5467147b87e8fca40de8ca6ecbf98e22"
         ),
         .binaryTarget(
             name: "KlarnaPayments",
-            url: "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaPayments/2.11.2/KlarnaPayments.xcframework.zip",
-            checksum: "cb32ba08dd975fa67ee5838191d9b97be11f4bd2ef28790a099023295733b3f4"
+            url: "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaPayments/2.11.3/KlarnaPayments.xcframework.zip",
+            checksum: "0410ca13d6e572dc7fa6d4d9991222c0e31d6b3e48b8ff1d703c9cb0db7fa3a6"
         )
     ]
 )

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "KlarnaMobileSDK"
-    s.version      = "2.11.2"
+    s.version      = "2.11.3"
     s.summary      = "Klarna Mobile SDK for iOS"
     s.description  = <<-DESC
     Klarna Mobile SDK for iOS apps.
@@ -9,13 +9,20 @@ Pod::Spec.new do |s|
     s.license      = { :type => "Apache License, Version 2.0", :text => "https://raw.githubusercontent.com/klarna/klarna-mobile-sdk-ios/refs/heads/master/LICENSE" }
     s.author       = { "Klarna Mobile SDK Team" => "mobile.sdk@klarna.com" }
     s.platform     = :ios, "10.0"
-    s.source       = { :http => "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaMobileSDK/2.11.2/XCFrameworks.zip" }
+    s.source       = { :http => "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaMobileSDK/2.11.3/XCFrameworks.zip" }
     s.requires_arc = true
     s.swift_version = "5.0"
 
     s.subspec 'core' do |sb|
         sb.vendored_frameworks = [
             "KlarnaCore.xcframework"
+        ]
+    end
+
+    s.subspec 'core-webview' do |sb|
+        sb.dependency 'KlarnaMobileSDK/core'
+        sb.vendored_frameworks = [
+            "KlarnaCoreWebView.xcframework"
         ]
     end
 
@@ -28,6 +35,7 @@ Pod::Spec.new do |s|
 
     s.subspec 'full' do |sb|
         sb.dependency 'KlarnaMobileSDK/core'
+        sb.dependency 'KlarnaMobileSDK/core-webview'
         sb.vendored_frameworks = [
             "KlarnaMobileSDK.xcframework",
             "KlarnaPayments.xcframework"
@@ -36,6 +44,7 @@ Pod::Spec.new do |s|
 
     s.subspec 'basic' do |sb|
         sb.dependency 'KlarnaMobileSDK/core'
+        sb.dependency 'KlarnaMobileSDK/core-webview'
         sb.vendored_frameworks = [
             "KlarnaMobileSDK.xcframework",
             "KlarnaPayments.xcframework"
@@ -68,6 +77,7 @@ Pod::Spec.new do |s|
 
     s.subspec 'KlarnaPayments' do |sb|
         sb.dependency 'KlarnaMobileSDK/core'
+        sb.dependency 'KlarnaMobileSDK/core-webview'
         sb.vendored_frameworks = [
             "KlarnaPayments.xcframework"
         ]
