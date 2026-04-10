@@ -40,7 +40,9 @@ jobs:
           git config user.name "Klarna Mobile SDK"
           git config user.email "67329369+klarna-msdk@users.noreply.github.com"
           git commit -m "update package v${version}"
-          git push origin main
+          git push -u https://${GH_TOKEN}@github.com/klarna/klarna-mobile-sdk-spm.git main
+        env:
+          GH_TOKEN: ${{ secrets.SPM_REPO_TOKEN }}
 
       - name: Create release in SPM repository
         if: steps.diff.outputs.changed == 'true'
