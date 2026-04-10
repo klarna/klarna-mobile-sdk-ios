@@ -46,6 +46,6 @@ jobs:
 
       - name: Create release in SPM repository
         if: steps.diff.outputs.changed == 'true'
-        run: gh release create "${{ github.event.release.tag_name }}" --title "${{ github.event.release.tag_name }}" --target main
+        run: gh release create "${{ github.event.release.tag_name }}" --title "${{ github.event.release.tag_name }}" --target main --repo "github.com/klarna/klarna-mobile-sdk-spm"
         env:
           GH_TOKEN: ${{ secrets.SPM_REPO_TOKEN }}
