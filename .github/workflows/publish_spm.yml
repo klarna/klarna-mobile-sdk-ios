@@ -1,0 +1,51 @@
+name: Publish SPM Package
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout SPM repository
+        uses: actions/checkout@v4
+        with:
+          repository: klarna/klarna-mobile-sdk-spm
+          token: ${{ secrets.SPM_REPO_TOKEN }}
+
+      - name: Fetch Package.swift from main repository
+        run: |
+          curl -fSL https://raw.githubusercontent.com/klarna/klarna-mobile-sdk-ios/refs/heads/master/Package.swift -o Package.swift
+          cat Package.swift
+
+      - name: Check for changes
+        id: diff
+        run: |
+          git add Package.swift
+          if git diff --staged --quiet; then
+            echo "Package.swift is already up to date — skipping."
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "Package.swift has changes."
+            git diff --staged
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          version="${{ github.event.release.tag_name }}"
+          git config user.name "Klarna Mobile SDK"
+          git config user.email "67329369+klarna-msdk@users.noreply.github.com"
+          git commit -m "update package v${version}"
+          git push -u https://${GH_TOKEN}@github.com/klarna/klarna-mobile-sdk-spm.git main
+        env:
+          GH_TOKEN: ${{ secrets.SPM_REPO_TOKEN }}
+
+      - name: Create release in SPM repository
+        if: steps.diff.outputs.changed == 'true'
+        run: gh release create "${{ github.event.release.tag_name }}" --title "${{ github.event.release.tag_name }}" --target main --repo "github.com/klarna/klarna-mobile-sdk-spm"
+        env:
+          GH_TOKEN: ${{ secrets.SPM_REPO_TOKEN }}
