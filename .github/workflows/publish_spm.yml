@@ -1,14 +1,29 @@
 name: Publish SPM Package
 
 on:
-  release:
+  workflow_run:
+    workflows: ["Create Release"]
     types:
-      - published
+      - completed
+  workflow_dispatch:
 
 jobs:
   publish:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
+      - name: Get latest release version
+        id: release
+        run: |
+          version=$(gh release list --repo "${{ github.repository }}" --limit 1 --json tagName --jq '.[0].tagName')
+          if [ -z "$version" ]; then
+            echo "ERROR: No release found!"
+            exit 1
+          fi
+          echo "version=$version" >> $GITHUB_OUTPUT
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Checkout SPM repository
         uses: actions/checkout@v4
         with:
@@ -36,7 +51,7 @@ jobs:
       - name: Commit and push
         if: steps.diff.outputs.changed == 'true'
         run: |
-          version="${{ github.event.release.tag_name }}"
+          version="${{ steps.release.outputs.version }}"
           git config user.name "Klarna Mobile SDK"
           git config user.email "67329369+klarna-msdk@users.noreply.github.com"
           git commit -m "update package v${version}"
@@ -46,6 +61,6 @@ jobs:
 
       - name: Create release in SPM repository
         if: steps.diff.outputs.changed == 'true'
-        run: gh release create "${{ github.event.release.tag_name }}" --title "${{ github.event.release.tag_name }}" --target main --repo "github.com/klarna/klarna-mobile-sdk-spm"
+        run: gh release create "${{ steps.release.outputs.version }}" --title "${{ steps.release.outputs.version }}" --target main --repo "klarna/klarna-mobile-sdk-spm"
         env:
           GH_TOKEN: ${{ secrets.SPM_REPO_TOKEN }}
