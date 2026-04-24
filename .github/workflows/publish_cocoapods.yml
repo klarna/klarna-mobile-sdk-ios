@@ -1,18 +1,33 @@
 name: Publish to CocoaPods
 
 on:
-  release:
+  workflow_run:
+    workflows: ["Create Release"]
     types:
-      - published
+      - completed
+  workflow_dispatch:
 
 jobs:
   publish:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     runs-on: macos-latest
     steps:
+      - name: Get latest release version
+        id: release
+        run: |
+          version=$(gh release list --repo "${{ github.repository }}" --limit 1 --json tagName --jq '.[0].tagName')
+          if [ -z "$version" ]; then
+            echo "ERROR: No release found!"
+            exit 1
+          fi
+          echo "version=$version" >> $GITHUB_OUTPUT
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.release.tag_name }}
+          ref: ${{ steps.release.outputs.version }}
 
       - name: Install CocoaPods
         run: gem install cocoapods -v 1.16.2
@@ -20,7 +35,7 @@ jobs:
       - name: Validate podspec version matches release
         run: |
           podspec_version=$(grep -m1 "s.version" KlarnaMobileSDK.podspec | grep -oE '[0-9]+\.[0-9]+\.[0-9]+')
-          release_version="${{ github.event.release.tag_name }}"
+          release_version="${{ steps.release.outputs.version }}"
           if [ "$podspec_version" != "$release_version" ]; then
             echo "ERROR: Podspec version ($podspec_version) does not match release version ($release_version)"
             exit 1
