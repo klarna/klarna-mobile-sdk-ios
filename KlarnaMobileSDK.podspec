@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "KlarnaMobileSDK"
-    s.version      = "2.11.4"
+    s.version      = "2.11.5"
     s.summary      = "Klarna Mobile SDK for iOS"
     s.description  = <<-DESC
     Klarna Mobile SDK for iOS apps.
@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
     s.license      = { :type => "Apache License, Version 2.0", :text => "https://raw.githubusercontent.com/klarna/klarna-mobile-sdk-ios/refs/heads/master/LICENSE" }
     s.author       = { "Klarna Mobile SDK Team" => "mobile.sdk@klarna.com" }
     s.platform     = :ios, "10.0"
-    s.source       = { :http => "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaMobileSDK/2.11.4/XCFrameworks.zip" }
+    s.source       = { :http => "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaMobileSDK/2.11.5/XCFrameworks.zip" }
     s.requires_arc = true
     s.swift_version = "5.0"
 
@@ -36,18 +36,18 @@ Pod::Spec.new do |s|
     s.subspec 'full' do |sb|
         sb.dependency 'KlarnaMobileSDK/core'
         sb.dependency 'KlarnaMobileSDK/core-webview'
+        sb.dependency 'KlarnaMobileSDK/KlarnaPayments'
         sb.vendored_frameworks = [
-            "KlarnaMobileSDK.xcframework",
-            "KlarnaPayments.xcframework"
+            "KlarnaMobileSDK.xcframework"
         ]
     end
 
     s.subspec 'basic' do |sb|
         sb.dependency 'KlarnaMobileSDK/core'
         sb.dependency 'KlarnaMobileSDK/core-webview'
+        sb.dependency 'KlarnaMobileSDK/KlarnaPayments'
         sb.vendored_frameworks = [
-            "KlarnaMobileSDK.xcframework",
-            "KlarnaPayments.xcframework"
+            "KlarnaMobileSDK.xcframework"
         ]
     end
 
