@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.11.6] - 2026-05-08
+
+- Improved fallback URL allowlist matching for the authentication browser.
+- Internal refactor to consolidate access to the SDK configuration asset.
+
 ## [2.11.5] - 2026-04-29
 
 - Fixed `KlarnaMobileSDK` podspec to declare `KlarnaPayments` as a subspec dependency instead of a sibling vendored framework, resolving CocoaPods integration failures.
