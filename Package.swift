@@ -30,43 +30,43 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "KlarnaCore",
-            url: "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaCore/2.11.6/KlarnaCore.xcframework.zip",
-            checksum: "50057ea001ee5160a26777a2ce8d7f3ea3206975c4bc336eb0246a3a40eb7c46"
+            url: "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaCore/2.11.7/KlarnaCore.xcframework.zip",
+            checksum: "5ce34f30ad24e272d6412373e96cfbbe79aa32f51920c8e17dc778ce8e9f55e3"
         ),
         .binaryTarget(
             name: "KlarnaCoreWebView",
-            url: "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaCoreWebView/2.11.6/KlarnaCoreWebView.xcframework.zip",
-            checksum: "9368a7d92909638d682f8b4e8ff56a6ddfb1a89e3eee7ccae56c59693f184dd4"
+            url: "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaCoreWebView/2.11.7/KlarnaCoreWebView.xcframework.zip",
+            checksum: "afa5de75433a94db2b194599516272aa3cf3f43a1a9b513a5b693b1cf7f98a86"
         ),
         .binaryTarget(
             name: "KlarnaMobileSDK",
-            url: "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaMobileSDK/2.11.6/KlarnaMobileSDK.xcframework.zip",
-            checksum: "6cb274b3cc789d9d5bf86d62fa6432ecb6bde5b3d28f2c733e878575302852e1"
+            url: "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaMobileSDK/2.11.7/KlarnaMobileSDK.xcframework.zip",
+            checksum: "3fada8e2706982fd1a7a0ba473adadd39214a36f51eefd8745790c69e30ea6a7"
         ),
         .binaryTarget(
             name: "KlarnaNetworkCore",
-            url: "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaNetworkCore/2.11.6/KlarnaNetworkCore.xcframework.zip",
-            checksum: "5c819114a51f8218fdd3b84931a5ce55f3d7efcfd25453d5a552e5f535a15bf1"
+            url: "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaNetworkCore/2.11.7/KlarnaNetworkCore.xcframework.zip",
+            checksum: "d46cf3a369223f8e0901dd7feb588531e3593cf2359328f19c9a259bde9cba23"
         ),
         .binaryTarget(
             name: "KlarnaNetworkPayment",
-            url: "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaNetworkPayment/2.11.6/KlarnaNetworkPayment.xcframework.zip",
-            checksum: "39f79e31c650319131aec6f00ee908824495190308c6d4a5982e235e5252677e"
+            url: "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaNetworkPayment/2.11.7/KlarnaNetworkPayment.xcframework.zip",
+            checksum: "070a46069102f854fb3b450250f6bd39994e90729eb426463a94c095e7e9cb9a"
         ),
         .binaryTarget(
             name: "KlarnaNetworkIdentity",
-            url: "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaNetworkIdentity/2.11.6/KlarnaNetworkIdentity.xcframework.zip",
-            checksum: "33f26e90945ca4a77e22405ed7a24f964f12565bd1d9279ab48ff7236fd068ab"
+            url: "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaNetworkIdentity/2.11.7/KlarnaNetworkIdentity.xcframework.zip",
+            checksum: "7b712f6e43a53cf57d7eb86859cac47911baff615416418d6a8a703a52bed91e"
         ),
         .binaryTarget(
             name: "KlarnaNetworkMessaging",
-            url: "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaNetworkMessaging/2.11.6/KlarnaNetworkMessaging.xcframework.zip",
-            checksum: "0b0c3ab3265cb2cb3c84b60dcd77f00d0f508526cb4bc569465ca871741fe146"
+            url: "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaNetworkMessaging/2.11.7/KlarnaNetworkMessaging.xcframework.zip",
+            checksum: "7f59e7574db004df6be5ee96f55379ec606f99599016fc888c5b4fca96f4e5ee"
         ),
         .binaryTarget(
             name: "KlarnaPayments",
-            url: "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaPayments/2.11.6/KlarnaPayments.xcframework.zip",
-            checksum: "073fa1b3c765738ec9d1feef853d2944bbe2598e92b0c4b6aaf811f9f2b22417"
+            url: "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaPayments/2.11.7/KlarnaPayments.xcframework.zip",
+            checksum: "b1e5db6c54d8ecb69ae0ec713dec55b4acfe58ace69cac5bdf4f67fab7169ec1"
         )
     ]
 )
