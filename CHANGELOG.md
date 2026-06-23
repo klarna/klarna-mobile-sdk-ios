@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.12.0] - 2026-06-23
+
+- Added SwiftUI support for Klarna Network Payment Button and Klarna Network Identity Button with new `KlarnaNetworkPaymentButtonSwiftUI` and `KlarnaNetworkIdentityButtonSwiftUI` modules.
+- Added SwiftUI support for Klarna Messaging integration with new `KlarnaNetworkMessagingSwiftUI` module.
+- Fixed iOS deployment target for Klarna Network frameworks.
+- Fixed race condition in asset data loading with a sequential queue.
+- Fixed logo alignment in KlarnaIdentityButton.
+- Fixed link text attributes in KlarnaMessagingPlacementView.
+- Fixed inconsistent internal messages with Klarna components in WebViews.
+- Removed deprecated/unused messages with Klarna components in WebViews.
+- :warning: **Deprecation**: KCO integrations and support has been officially deprecated and will be removed in future versions of the SDK. Please migrate to [Kustom Mobile SDK](https://docs.kustom.co/contents/checkout/integrate-kco-in-your-mobile/introduction) if you are integrating KCO via `KlarnaCheckoutView`, `KlarnaHybridSDK` or `KlarnaStandaloneWebView`.
+
 ## [2.11.7] - 2026-06-01
 
 - Added `KlarnaAcquiringConfig` to initialize `Klarna` instances with payment account reference and acquiring account id.

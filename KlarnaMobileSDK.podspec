@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "KlarnaMobileSDK"
-    s.version      = "2.11.7"
+    s.version      = "2.12.0"
     s.summary      = "Klarna Mobile SDK for iOS"
     s.description  = <<-DESC
     Klarna Mobile SDK for iOS apps.
@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
     s.license      = { :type => "Apache License, Version 2.0", :text => "https://raw.githubusercontent.com/klarna/klarna-mobile-sdk-ios/refs/heads/master/LICENSE" }
     s.author       = { "Klarna Mobile SDK Team" => "mobile.sdk@klarna.com" }
     s.platform     = :ios, "10.0"
-    s.source       = { :http => "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaMobileSDK/2.11.7/XCFrameworks.zip" }
+    s.source       = { :http => "https://x.klarnacdn.net/mobile-sdk/ios/frameworks/KlarnaMobileSDK/2.12.0/XCFrameworks.zip" }
     s.requires_arc = true
     s.swift_version = "5.0"
 
@@ -27,6 +27,7 @@ Pod::Spec.new do |s|
     end
 
     s.subspec 'kncore' do |sb|
+        sb.ios.deployment_target = "13.0"
         sb.dependency 'KlarnaMobileSDK/core'
         sb.vendored_frameworks = [
             "KlarnaNetworkCore.xcframework"
@@ -52,6 +53,7 @@ Pod::Spec.new do |s|
     end
 
     s.subspec 'KlarnaNetworkPayment' do |sb|
+        sb.ios.deployment_target = "13.0"
         sb.dependency 'KlarnaMobileSDK/core'
         sb.dependency 'KlarnaMobileSDK/kncore'
         sb.vendored_frameworks = [
@@ -59,7 +61,27 @@ Pod::Spec.new do |s|
         ]
     end
 
+    s.subspec 'KlarnaNetworkPaymentButton' do |sb|
+        sb.ios.deployment_target = "13.0"
+        sb.dependency 'KlarnaMobileSDK/core'
+        sb.dependency 'KlarnaMobileSDK/kncore'
+        sb.vendored_frameworks = [
+            "KlarnaNetworkPaymentButton.xcframework"
+        ]
+    end
+
+    s.subspec 'KlarnaNetworkPaymentButtonSwiftUI' do |sb|
+        sb.ios.deployment_target = "13.0"
+        sb.dependency 'KlarnaMobileSDK/core'
+        sb.dependency 'KlarnaMobileSDK/kncore'
+        sb.dependency 'KlarnaMobileSDK/KlarnaNetworkPaymentButton'
+        sb.vendored_frameworks = [
+            "KlarnaNetworkPaymentButtonSwiftUI.xcframework"
+        ]
+    end
+
     s.subspec 'KlarnaNetworkMessaging' do |sb|
+        sb.ios.deployment_target = "13.0"
         sb.dependency 'KlarnaMobileSDK/core'
         sb.dependency 'KlarnaMobileSDK/kncore'
         sb.vendored_frameworks = [
@@ -67,11 +89,41 @@ Pod::Spec.new do |s|
         ]
     end
 
+    s.subspec 'KlarnaNetworkMessagingSwiftUI' do |sb|
+        sb.ios.deployment_target = "13.0"
+        sb.dependency 'KlarnaMobileSDK/core'
+        sb.dependency 'KlarnaMobileSDK/kncore'
+        sb.dependency 'KlarnaMobileSDK/KlarnaNetworkMessaging'
+        sb.vendored_frameworks = [
+            "KlarnaNetworkMessagingSwiftUI.xcframework"
+        ]
+    end
+
     s.subspec 'KlarnaNetworkIdentity' do |sb|
+        sb.ios.deployment_target = "13.0"
         sb.dependency 'KlarnaMobileSDK/core'
         sb.dependency 'KlarnaMobileSDK/kncore'
         sb.vendored_frameworks = [
             "KlarnaNetworkIdentity.xcframework"
+        ]
+    end
+
+    s.subspec 'KlarnaNetworkIdentityButton' do |sb|
+        sb.ios.deployment_target = "13.0"
+        sb.dependency 'KlarnaMobileSDK/core'
+        sb.dependency 'KlarnaMobileSDK/kncore'
+        sb.vendored_frameworks = [
+            "KlarnaNetworkIdentityButton.xcframework"
+        ]
+    end
+
+    s.subspec 'KlarnaNetworkIdentityButtonSwiftUI' do |sb|
+        sb.ios.deployment_target = "13.0"
+        sb.dependency 'KlarnaMobileSDK/core'
+        sb.dependency 'KlarnaMobileSDK/kncore'
+        sb.dependency 'KlarnaMobileSDK/KlarnaNetworkIdentityButton'
+        sb.vendored_frameworks = [
+            "KlarnaNetworkIdentityButtonSwiftUI.xcframework"
         ]
     end
 
