@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.13.0] - 2026-07-22
+
+- Added `KlarnaPaymentPresentationContent` support to `KlarnaPaymentButton`, letting merchants customize the button's text, image, and logo alignment via `setContent(_:)`.
+- Fixed an issue where applying a theme to `KlarnaPaymentView` and `KlarnaStandaloneWebView` had no effect.
+- Improved analytics data anonymization.
+
 ## [2.12.0] - 2026-06-23
 
 - Added SwiftUI support for Klarna Network Payment Button and Klarna Network Identity Button with new `KlarnaNetworkPaymentButtonSwiftUI` and `KlarnaNetworkIdentityButtonSwiftUI` modules.
