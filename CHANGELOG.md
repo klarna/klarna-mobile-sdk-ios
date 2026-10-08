@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.16.0] - 2026-10-08
+
+- Added the `KlarnaWebViewHybrid` and `KlarnaWebViewStandalone` modules, so integrators who only need the Hybrid SDK or `KlarnaStandaloneWebView` can depend on them directly instead of the full SDK.
+- `KlarnaMobileSDK` continues to include both modules, so existing integrations need no changes.
+- Removed the internal-only `KlarnaHybridSDKDebug` type from the public API.
+
 ## [2.15.0] - 2026-09-25
 
 - Added Prequalification support to `KlarnaNetworkMessaging` via `klarna.messaging.prequalification`.
