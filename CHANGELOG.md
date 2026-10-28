@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.16.1] - 2026-10-27
+
+- Fixed an issue where requests made right after initializing Klarna Network products could use incorrect defaults.
+- Improved analytics events and the reliability of network request validation.
+- Other internal improvements.
+
 ## [2.16.0] - 2026-10-08
 
 - Added the `KlarnaWebViewHybrid` and `KlarnaWebViewStandalone` modules, so integrators who only need the Hybrid SDK or `KlarnaStandaloneWebView` can depend on them directly instead of the full SDK.
