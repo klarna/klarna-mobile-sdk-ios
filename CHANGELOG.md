@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.17.0] - 2026-11-17
+
+- Added a `redirectUrl` parameter to Sign in with Klarna (`KlarnaSignInSDK.signIn` and `KlarnaSignInButton`) so that apps such as BankID can return to your app without interrupting the sign-in.
+- Klarna Network Identity sign-in now uses the `KlarnaConfiguration.appReturnUrl` so that apps such as BankID can return to your app without interrupting the sign-in. It must differ from the `redirectUrl` and not share its custom scheme, otherwise the sign-in fails with `SIGN_IN_INVALID_APP_RETURN_URL`.
+- :warning: **Deprecation**: the `KlarnaSignInSDK.signIn` method and the `KlarnaSignInButton` initializers without `redirectUrl` are deprecated. Use the new variants that take `redirectUrl`.
+- Added support for opening external apps through universal links only.
+- Fixed an issue where adding a web view that was already tracked could cause unexpected behavior.
+
 ## [2.16.1] - 2026-10-27
 
 - Fixed an issue where requests made right after initializing Klarna Network products could use incorrect defaults.
